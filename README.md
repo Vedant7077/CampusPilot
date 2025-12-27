@@ -36,7 +36,7 @@ npm start
 ```
 
 4. **LOGINS**
-````bash
+```bash
 User Login = u@gmail.com  Password = 123456
-Admin Login = ad@gmail.com  Password - 123456
+Admin Login = ad@gmail.com  Password = 123456
 ```
