@@ -26,11 +26,17 @@ git clone https://github.com/Vedant7077/CampusPilot.git
 cd smart-campus1
 ```
 2. **Install Dependencies**
+```bash
 npm install
+```
 
 3. **To Run App**
+```bash
 npm start
+```
 
 4. **LOGINS**
+````bash
 User Login = u@gmail.com  Password = 123456
 Admin Login = ad@gmail.com  Password - 123456
+```
