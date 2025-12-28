@@ -10,22 +10,73 @@ const buildingsData = [
         name: 'Ground Floor',
         rooms: [
           {
-            name: 'Classroom 101',
-            image: require('../../assets/images/class101.png'),  // Example of local asset
+            name: 'Classroom 001',
+            image: 'https://i.imgur.com/yourImage3.jpg',  // Example of local asset
             steps: ['Enter Main Gate', 'Walk straight 50m', 'Room is on left'],
           },
           {
-            name: 'Classroom 102',
+            name: 'Classroom 002',
             image: 'https://i.imgur.com/yourImage3.jpg',
             steps: ['Enter Main Gate', 'Walk straight 50m', 'Room is on right'],
           },
+          {
+            name: 'Classroom 003',
+            image: 'https://i.imgur.com/yourImage3.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 50m', 'Room is on right'],
+          },
+          {
+            name: 'Science Lab',
+            image: 'https://i.imgur.com/yourImage3.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 50m', 'Room is on right'],
+          },
+          {
+            name: 'Ladies Washroom',
+            image: 'https://i.imgur.com/yourImage3.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 50m', 'Room is on right'],
+          },
+          {
+            name: 'Gents Washroom',
+            image: 'https://i.imgur.com/yourImage3.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 50m', 'Room is on right'],
+          },
+          
         ],
       },
       {
         name: 'First Floor',
         rooms: [
           {
-            name: 'Lab 201',
+            name: 'Lab 101',
+            image: 'https://i.imgur.com/yourImage3.jpg',
+            steps: ['Take stairs to 1st floor', 'Turn right', 'Lab is ahead'],
+          },
+          {
+            name: 'Lab 102',
+            image: 'https://i.imgur.com/yourImage3.jpg',
+            steps: ['Take stairs to 1st floor', 'Turn right', 'Lab is ahead'],
+          },
+          {
+            name: 'Classroom 104',
+            image: 'https://i.imgur.com/yourImage3.jpg',
+            steps: ['Take stairs to 1st floor', 'Turn right', 'Lab is ahead'],
+          },
+          {
+            name: 'Classroom 105',
+            image: 'https://i.imgur.com/yourImage3.jpg',
+            steps: ['Take stairs to 1st floor', 'Turn right', 'Lab is ahead'],
+          },
+          {
+            name: 'Classroom 106',
+            image: 'https://i.imgur.com/yourImage3.jpg',
+            steps: ['Take stairs to 1st floor', 'Turn right', 'Lab is ahead'],
+          },
+          {
+            name: 'Staffroom',
+            image: 'https://i.imgur.com/yourImage3.jpg',
+            steps: ['Take stairs to 1st floor', 'Turn right', 'Lab is ahead'],
+          },
+          {
+            name: 'HOD cabin',
             image: 'https://i.imgur.com/yourImage3.jpg',
             steps: ['Take stairs to 1st floor', 'Turn right', 'Lab is ahead'],
           },
@@ -40,26 +91,244 @@ const buildingsData = [
         name: 'Ground Floor',
         rooms: [
           {
-            name: 'Workshop',
+            name: 'Mechanical Workshop',
             image: 'https://i.imgur.com/yourImage4.jpg',
             steps: ['Enter Main Gate', 'Walk straight to central ground', 'Workshop on left'],
           },
+          {
+            name: 'Electrical Workshop',
+            image: 'https://i.imgur.com/yourImage4.jpg',
+            steps: ['Enter Main Gate', 'Walk straight to central ground', 'Workshop on left'],
+          },
+          {
+            name: 'Extc Lab 001',
+            image: 'https://i.imgur.com/yourImage4.jpg',
+            steps: ['Enter Main Gate', 'Walk straight to central ground', 'Workshop on left'],
+          },
+          {
+            name: 'MECH Lab 002',
+            image: 'https://i.imgur.com/yourImage4.jpg',
+            steps: ['Enter Main Gate', 'Walk straight to central ground', 'Workshop on left'],
+          },
+          {
+            name: 'Extc CR-1',
+            image: 'https://i.imgur.com/yourImage4.jpg',
+            steps: ['Enter Main Gate', 'Walk straight to central ground', 'Workshop on left'],
+          },
+          {
+            name: 'Extc CR-2',
+            image: 'https://i.imgur.com/yourImage4.jpg',
+            steps: ['Enter Main Gate', 'Walk straight to central ground', 'Workshop on left'],
+          },
+          {
+            name: 'Mech Cr-1',
+            image: 'https://i.imgur.com/yourImage4.jpg',
+            steps: ['Enter Main Gate', 'Walk straight to central ground', 'Workshop on left'],
+          },
+
         ],
       },
       {
         name: 'First Floor',
         rooms: [
           {
-            name: 'Computer Lab',
+            name: 'Comp Lab-1',
             image: 'https://i.imgur.com/yourImage5.jpg',
             steps: ['Take stairs to 1st floor', 'Turn left', 'Lab is on right'],
           },
+          {
+            name: 'Comp Lab-2',
+            image: 'https://i.imgur.com/yourImage5.jpg',
+            steps: ['Take stairs to 1st floor', 'Turn left', 'Lab is on right'],
+          },
+          {
+            name: 'Comp Lab-3',
+            image: 'https://i.imgur.com/yourImage5.jpg',
+            steps: ['Take stairs to 1st floor', 'Turn left', 'Lab is on right'],
+          },
+          {
+            name: 'Comp Lab-4',
+            image: 'https://i.imgur.com/yourImage5.jpg',
+            steps: ['Take stairs to 1st floor', 'Turn left', 'Lab is on right'],
+          },
+          {
+            name: 'Comp Lab-5',
+            image: 'https://i.imgur.com/yourImage5.jpg',
+            steps: ['Take stairs to 1st floor', 'Turn left', 'Lab is on right'],
+          },
+          {
+            name: 'Comp Cr-1',
+            image: 'https://i.imgur.com/yourImage5.jpg',
+            steps: ['Take stairs to 1st floor', 'Turn left', 'Lab is on right'],
+          },
+          {
+            name: 'Comp Cr-2',
+            image: 'https://i.imgur.com/yourImage5.jpg',
+            steps: ['Take stairs to 1st floor', 'Turn left', 'Lab is on right'],
+          },
+        ],
+      },
+      {
+        name: 'Second Floor',
+        rooms: [
+          {
+            name: 'Mech Lab-02',
+            image: 'https://i.imgur.com/yourImage5.jpg',
+            steps: ['Take stairs to 2nd floor', 'Turn left', 'Lab is on right'],
+          },
+          {
+            name: 'ITI Cr-1',
+            image: 'https://i.imgur.com/yourImage5.jpg',
+            steps: ['Take stairs to 2nd floor', 'Turn left', 'Lab is on right'],
+          },
+          {
+            name: 'ITI Lab-01',
+            image: 'https://i.imgur.com/yourImage5.jpg',
+            steps: ['Take stairs to 2nd floor', 'Turn left', 'Lab is on right'],
+          },
+          {
+            name: 'Girls Common Room',
+            image: 'https://i.imgur.com/yourImage5.jpg',
+            steps: ['Take stairs to 2nd floor', 'Turn left', 'Lab is on right'],
+          },
+          {
+            name: 'Boys Common Room',
+            image: 'https://i.imgur.com/yourImage5.jpg',
+            steps: ['Take stairs to 2nd floor', 'Turn left', 'Lab is on right'],
+          },
+          {
+            name: 'IT Staffroom',
+            image: 'https://i.imgur.com/yourImage5.jpg',
+            steps: ['Take stairs to 2nd floor', 'Turn left', 'Lab is on right'],
+          },
+          
+          
         ],
       },
     ],
   },
   {
     name: 'Library',
+    floors: [
+      {
+        name: 'Ground Floor',
+        rooms: [
+          {
+            name: 'Reading Hall',
+            image: 'https://i.imgur.com/yourImage6.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 100m', 'Reading Hall is on left'],
+          },
+          {
+            name: 'Reference Section',
+            image: 'https://i.imgur.com/yourImage7.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 100m', 'Reference Section is on right'],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'ITI Building',
+    floors: [
+      {
+        name: 'Ground Floor',
+        rooms: [
+          {
+            name: 'Reading Hall',
+            image: 'https://i.imgur.com/yourImage6.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 100m', 'Reading Hall is on left'],
+          },
+          {
+            name: 'Reference Section',
+            image: 'https://i.imgur.com/yourImage7.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 100m', 'Reference Section is on right'],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Canteen',
+    floors: [
+      {
+        name: 'Ground Floor',
+        rooms: [
+          {
+            name: 'Reading Hall',
+            image: 'https://i.imgur.com/yourImage6.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 100m', 'Reading Hall is on left'],
+          },
+          {
+            name: 'Reference Section',
+            image: 'https://i.imgur.com/yourImage7.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 100m', 'Reference Section is on right'],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Palm Wing',
+    floors: [
+      {
+        name: 'Pal',
+        rooms: [
+          {
+            name: 'Reading Hall',
+            image: 'https://i.imgur.com/yourImage6.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 100m', 'Reading Hall is on left'],
+          },
+          {
+            name: 'Reference Section',
+            image: 'https://i.imgur.com/yourImage7.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 100m', 'Reference Section is on right'],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Rose Wing',
+    floors: [
+      {
+        name: 'Ground Floor',
+        rooms: [
+          {
+            name: 'Reading Hall',
+            image: 'https://i.imgur.com/yourImage6.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 100m', 'Reading Hall is on left'],
+          },
+          {
+            name: 'Reference Section',
+            image: 'https://i.imgur.com/yourImage7.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 100m', 'Reference Section is on right'],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Lotus Wing',
+    floors: [
+      {
+        name: 'Ground Floor',
+        rooms: [
+          {
+            name: 'Reading Hall',
+            image: 'https://i.imgur.com/yourImage6.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 100m', 'Reading Hall is on left'],
+          },
+          {
+            name: 'Reference Section',
+            image: 'https://i.imgur.com/yourImage7.jpg',
+            steps: ['Enter Main Gate', 'Walk straight 100m', 'Reference Section is on right'],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Sunflower Wing',
     floors: [
       {
         name: 'Ground Floor',
@@ -87,7 +356,7 @@ export default function IndoorNavigation() {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>🏫 Indoor Navigation</Text>
+      {/* <Text style={styles.title}>🏫 Indoor Navigation</Text> */}
       <Text style={styles.subtitle}>Starting Point: Main Gate</Text>
 
       {/* Show Buildings */}

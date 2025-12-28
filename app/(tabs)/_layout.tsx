@@ -2,6 +2,9 @@ import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
 import { Pressable } from 'react-native';
+import { router } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -42,13 +45,7 @@ export default function TabLayout() {
         }}
       />
 
-      <Tabs.Screen
-        name="scan"
-        options={{
-          title: 'Scan',
-          tabBarIcon: ({ color }) => <TabBarIcon name="qrcode" color={color} />,
-        }}
-      />
+      
       <Tabs.Screen
         name="chatassist"
         options={{
@@ -56,6 +53,27 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <TabBarIcon name="commenting" color={color} />,
         }}
       />
+      <Tabs.Screen
+  name="scan"
+  options={{
+    title: 'Logout',
+    tabBarIcon: ({ color }) => (
+      <TabBarIcon name="sign-out" color={color} />
+    ),
+  }}
+  listeners={{
+    tabPress: (e) => {
+      e.preventDefault(); // ⛔ stop normal navigation
+
+      // 🔐 clear login data
+      AsyncStorage.removeItem('token'); // or user / auth key
+
+      // 🔁 redirect to login
+      router.replace('/login');
+    },
+  }}
+/>
+
     </Tabs>
   );
 }

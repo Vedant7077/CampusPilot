@@ -29,7 +29,7 @@ export default function LoginScreen() {
       await signInWithEmailAndPassword(auth, email, password);
 
       if (adminEmails.includes(email)) {
-        router.replace('/admin/dashboard');
+        router.replace('/dashboard');
       } else {
         router.replace('/(tabs)/home');
       }
