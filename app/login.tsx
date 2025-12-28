@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, Button, Alert } from 'react-native';
+import {
+  StyleSheet,
+  TextInput,
+  Alert,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { Stack, router } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
@@ -10,10 +17,8 @@ export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // 👨‍🎓 Admin emails (hardcoded)
   const adminEmails = ['ad@gmail.com', 'pillaiadmin@gmail.com'];
 
-  // 🔐 Firebase Login
   const handleLogin = async () => {
     if (!email || !password) {
       Alert.alert('Error', 'Please fill all fields');
@@ -23,58 +28,64 @@ export default function LoginScreen() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
 
-      // Role check
       if (adminEmails.includes(email)) {
-        Alert.alert('Login Successful', 'Welcome Admin', [
-          {
-            text: 'OK',
-            onPress: () => router.replace('/admin/dashboard'),
-          },
-        ]);
+        router.replace('/admin/dashboard');
       } else {
-        Alert.alert('Login Successful', 'Welcome User', [
-          {
-            text: 'OK',
-            onPress: () => router.replace('/(tabs)/home'),
-          },
-        ]);
+        router.replace('/(tabs)/home');
       }
     } catch (error: any) {
       Alert.alert('Login Failed', error.message);
     }
   };
 
-  // 👤 Guest Mode
-  const guestLogin = () => {
-    router.replace('/(tabs)/home');
-  };
-
   return (
-    <View style={styles.container}>
-      <Stack.Screen options={{ title: 'Login' }} />
+    <LinearGradient
+      colors={['#2563eb', '#3b82f6', '#60a5fa']}
+      style={styles.container}
+    >
+      <Stack.Screen options={{ headerShown: false }} />
 
-      <Text style={styles.title}>Smart Campus Login</Text>
+      <View style={styles.card}>
+        {/* 🏫 LOGO */}
+        <Image
+          source={require('../assets/images/logo.png')}
+          style={styles.logo}
+          resizeMode="contain"
+        />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        autoCapitalize="none"
-      />
+        <Text style={styles.title}>CampusPilot</Text>
+        <Text style={styles.subtitle}>Login to continue</Text>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor="#64748b"
+          value={email}
+          onChangeText={setEmail}
+          autoCapitalize="none"
+        />
 
-      <Button title="Login" onPress={handleLogin} />
-      <View style={{ marginTop: 10 }} />
-      <Button title="Continue as Guest" onPress={guestLogin} />
-    </View>
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          placeholderTextColor="#64748b"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
+
+        <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
+          <Text style={styles.loginText}>Login</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.guestBtn}
+          onPress={() => router.replace('/(tabs)/home')}
+        >
+          <Text style={styles.guestText}>Continue as Guest</Text>
+        </TouchableOpacity>
+      </View>
+    </LinearGradient>
   );
 }
 
@@ -83,21 +94,66 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+  },
+  card: {
+    width: '90%',
+    backgroundColor: '#ffffff',
+    borderRadius: 18,
+    padding: 25,
+    elevation: 8,
+    alignItems: 'center',
+  },
+  logo: {
+    width: 90,
+    height: 90,
+    marginBottom: 10,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
-    marginBottom: 25,
+    fontFamily: 'Poppins',
+    color: '#1e40af',
+    textAlign: 'center',
+  },
+  subtitle: {
+    textAlign: 'center',
+    color: '#64748b',
+    marginBottom: 20,
   },
   input: {
-    width: '90%',
+    width: '100%',
     height: 50,
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    paddingHorizontal: 10,
+    borderColor: '#c7d2fe',
+    borderRadius: 10,
+    paddingHorizontal: 15,
     marginBottom: 15,
-    backgroundColor: 'white',
+    backgroundColor: '#f8fafc',
+  },
+  loginBtn: {
+    backgroundColor: '#2563eb',
+    padding: 14,
+    borderRadius: 10,
+    marginTop: 10,
+    width: '100%',
+  },
+  loginText: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  guestBtn: {
+    marginTop: 15,
+    padding: 12,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#2563eb',
+    width: '100%',
+  },
+  guestText: {
+    textAlign: 'center',
+    color: '#2563eb',
+    fontWeight: '600',
   },
 });
