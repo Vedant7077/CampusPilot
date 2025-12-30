@@ -11,18 +11,19 @@ import {
   Platform,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // 2️⃣ CONSTANTS
-// production url
 const WEBHOOK_URL =
-  "https://acd11bcd0892.ngrok-free.app/webhook/bab881ea-e42d-4da6-a216-edfd21a0d08a";
+  "https://fe6d07f40a79.ngrok-free.app/webhook/bab881ea-e42d-4da6-a216-edfd21a0d08a";
 
 type Message = {
   id: string;
   text: string;
   sender: "user" | "bot";
 };
+
+const CHAT_KEY_PREFIX = "chat_history_";
 
 // 🔹 Typing dots component
 const TypingDots = () => {
@@ -50,13 +51,50 @@ export default function AssistantScreen() {
   ]);
 
   const [isTyping, setIsTyping] = useState(false);
-
   const flatListRef = useRef<FlatList>(null);
 
-  // session id stays same
   const [sessionId] = useState(() =>
     Math.random().toString(36).substring(2, 10)
   );
+
+  // ✅ LOAD CHAT HISTORY (USER ONLY)
+  useEffect(() => {
+    const loadChatHistory = async () => {
+      const userType = await AsyncStorage.getItem("userType");
+      if (userType !== "user") return;
+
+      const email = await AsyncStorage.getItem("userEmail");
+      if (!email) return;
+
+      const savedChat = await AsyncStorage.getItem(
+        CHAT_KEY_PREFIX + email
+      );
+
+      if (savedChat) {
+        setMessages(JSON.parse(savedChat));
+      }
+    };
+
+    loadChatHistory();
+  }, []);
+
+  // ✅ SAVE CHAT HISTORY (USER ONLY)
+  useEffect(() => {
+    const saveChatHistory = async () => {
+      const userType = await AsyncStorage.getItem("userType");
+      if (userType !== "user") return;
+
+      const email = await AsyncStorage.getItem("userEmail");
+      if (!email) return;
+
+      await AsyncStorage.setItem(
+        CHAT_KEY_PREFIX + email,
+        JSON.stringify(messages)
+      );
+    };
+
+    saveChatHistory();
+  }, [messages]);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -69,7 +107,7 @@ export default function AssistantScreen() {
 
     setMessages(prev => [...prev, userMessage]);
     setInput("");
-    setIsTyping(true); // 👈 START typing
+    setIsTyping(true);
 
     try {
       const url = `${WEBHOOK_URL}?query=${encodeURIComponent(
@@ -94,10 +132,7 @@ export default function AssistantScreen() {
           sender: "bot",
         },
       ]);
-
-      console.log("n8n raw response:", data);
     } catch (error) {
-      console.log("Webhook error:", error);
       setMessages(prev => [
         ...prev,
         {
@@ -107,7 +142,7 @@ export default function AssistantScreen() {
         },
       ]);
     } finally {
-      setIsTyping(false); // 👈 STOP typing
+      setIsTyping(false);
     }
   };
 
